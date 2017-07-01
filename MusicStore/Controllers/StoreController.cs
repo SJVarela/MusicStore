@@ -9,15 +9,11 @@ namespace MusicStore.Controllers
 {
     public class StoreController : Controller
     {
+        MusicStoreEntities storeDb = new MusicStoreEntities();
         // GET: Store
         public ActionResult Index()
         {
-            return View(new List<Genre>
-            {
-                new Genre {Name = "Disco" },
-                new Genre {Name = "Jazz" },
-                new Genre {Name = "Rock" }
-            });
+            return View(storeDb.Genres.ToList());
         }
         public ActionResult Browse(string genre)
         {
